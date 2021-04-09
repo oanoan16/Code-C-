@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://code.ptit.edu.vn/student/question -->
+<html lang="vi"><script id="allow-copy_script">(function agent() {
+    let unlock = false
+    document.addEventListener('allow_copy', (event) => {
+      unlock = event.detail.unlock
+    })
+
+    const copyEvents = [
+      'copy',
+      'cut',
+      'contextmenu',
+      'selectstart',
+      'mousedown',
+      'mouseup',
+      'mousemove',
+      'keydown',
+      'keypress',
+      'keyup',
+    ]
+    const rejectOtherHandlers = (e) => {
+      if (unlock) {
+        e.stopPropagation()
+        if (e.stopImmediatePropagation) e.stopImmediatePropagation()
+      }
+    }
+    copyEvents.forEach((evt) => {
+      document.documentElement.addEventListener(evt, rejectOtherHandlers, {
+        capture: true,
+      })
+    })
+  })()</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+    <link rel="shortcut icon" href="http://code.ptit.edu.vn/favicon.png">
+    <meta name="csrf-token" content="lv7pai6dkFufClQahPKoNUHDfKNxGsD8uII47Z5B">
+    <title>Bài tập</title>
+    <!-- Scripts -->
+    <script src="./Bài tập_files/app.js.tải xuống"></script>
+        <!-- Styles -->
+    <link href="./Bài tập_files/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="./Bài tập_files/style.css">
+    <link rel="stylesheet" href="./Bài tập_files/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="./Bài tập_files/jquery.datetimepicker.css">
+
+    <!-- Default Theme (Core) -->
+    <link rel="stylesheet" href="./Bài tập_files/default.css">
+    <!-- Default Theme (Date Picker) -->
+    <link rel="stylesheet" href="./Bài tập_files/default.date.css">
+    <!-- Default Theme (Time Picker If Needed)-->
+    <link rel="stylesheet" href="./Bài tập_files/default.time.css">
+
+    <!-- For RTL Layout -->
+    <link rel="stylesheet" href="./Bài tập_files/rtl.css">
+
+</head>
+<body>
+<div class="container-fluid">
+    <!-- NAVIGATION BAR  -->
+    <div class="nav">
+        <div class="row">
+            <div class="col-6">
+                <div class="nav__menu">
+                    <div class="nav__menu__item" id="nav__logo">
+                        <a class="nav__menu__item__logo" href="http://code.ptit.edu.vn/">
+                            <img src="./Bài tập_files/logo_ptit.png" alt="">
+                        </a>
+                    </div>
+                                            <div class="nav__menu__item">
+                            <a href="http://code.ptit.edu.vn/student/question">
+                                Bài tập
+                            </a>
+                        </div>
+                        <div class="nav__menu__item">
+                            <a href="http://code.ptit.edu.vn/student/solution">
+                                Trạng thái
+                            </a>
+                        </div>
+                        <div class="nav__menu__item">
+                            <a href="http://code.ptit.edu.vn/student/history">
+                                Lịch sử
+                            </a>
+                        </div>
+                        <div class="nav__menu__item">
+                            <a href="http://code.ptit.edu.vn/student/ranking">
+                                Bảng xếp hạng
+                            </a>
+                        </div>
+                        <div class="nav__menu__item">
+                            <a href="http://code.ptit.edu.vn/guide">
+                                Hướng dẫn
+                            </a>
+                        </div>
+                                    </div>
+            </div>
+            <div class="col-6">
+                <div class="nav__profile">
+
+
+
+
+
+
+
+
+                                        <div class="nav__profile__img">
+
+                        <img onclick="toggleMenu(&#39;profile__dropdown&#39;)" src="./Bài tập_files/avt.png" alt="">
+                        <div class="nav__profile__menu profile__dropdown disappear">
+                            <ul>
+                                <li>
+                                    <p class="nav__profile__menu__name">Phạm Thị Kiều Oanh</p>
+                                    <p class="nav__profile__menu__code">B19DCAT134</p>
+                                </li>
+                                <li><a href="http://code.ptit.edu.vn/user/profile">Hồ sơ</a></li>
+                                                                <li><a href="http://code.ptit.edu.vn/student/courses">Lớp học</a></li>
+                                    
+                                                                <li><a href="http://code.ptit.edu.vn/logout" onclick="event.preventDefault();
+                                             document.getElementById(&#39;logout-form&#39;).submit();">
+                                    Đăng xuất
+                                </a>
+                                    <form id="logout-form" action="http://code.ptit.edu.vn/logout" method="POST" style="display: none;">
+                                        <input type="hidden" name="_token" value="lv7pai6dkFufClQahPKoNUHDfKNxGsD8uII47Z5B">                                    </form>
+                                </li>
+                                                            </ul>
+                        </div>
+                        <button onclick="toggleMenu(&#39;profile__dropdown&#39;)">
+                            <i class="fa fa-caret-down" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+        <div class="wrapper">
+        <div class="main--fluid">
+                <div class="status">
+        <div class="ques__nav__top">
+            <span class="ques__nav__title">Bài tập</span>
+            <form action="http://code.ptit.edu.vn/student/question" class="ques__nav__form">
+                <input type="text" name="s" id="" placeholder="Tìm theo mã, tiêu đề">
+                <input type="submit" value="/">
+            </form>
+        </div>
+
+                    <div class="ques__nav__bottom">
+                <div class="custom__nav__select">
+                    <div class="custom-select select__subject">
+                        <select id="course" name="course" class="form-control" onchange="(window.location = &#39;?course=&#39; + this.options[this.selectedIndex].value);">
+                                                                                                <option disabled="">Học kỳ 2 năm học 2020-2021</option>
+                                                                <option selected="" value="43">Luyện tập Lập trình thi đấu - Nhóm Luyện tập Lập trình thi đấu - 2021</option>
+                                                    </select>
+                    <div class="select-selected">Luyện tập Lập trình thi đấu - Nhóm ...</div><div class="select-items select-hide"><div>Học kỳ 2 năm học 2020-2021</div><div>Luyện tập Lập trình thi đấu - Nhóm Luyện tập Lập trình thi đấu - 2021</div></div></div>
+                </div>
+            </div>
+                                    <div class="ques__table__wrapper">
+                <table class="ques__table">
+                    <thead>
+                    <tr class="ques__table__head">
+                        <th></th>
+                        <th class="text--middle">STT</th>
+                        <th>
+                            <a href="http://code.ptit.edu.vn/student/question?order=desc&amp;by=code"><i class="fa fa-fw fa-sort"></i></a>Mã</th>
+                        <th>
+                            <a href="http://code.ptit.edu.vn/student/question?order=desc&amp;by=name"><i class="fa fa-fw fa-sort"></i></a>Tiêu đề</th>
+                        <th>
+                            Nhóm
+                        </th>
+                        <th>
+                            Chủ đề con
+                        </th>
+                        <th class="text--middle">
+                            <a href="http://code.ptit.edu.vn/student/question?order=desc&amp;by=level"><i class="fa fa-fw fa-sort-up"></i></a>Độ khó</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                                            <tr class="bg--10th">
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">1</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01001">CP01001</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01001">TÍNH TỔNG</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr class="bg--10th">
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">2</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01002">CP01002</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01002">TỔNG GIAI THỪA</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">3</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01003">CP01003</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01003">SỐ THUẦN NGUYÊN TỐ</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">4</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01004">CP01004</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01004">SỐ XUẤT HIỆN NHIỀU NHẤT</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">5</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01005">CP01005</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01005">TẦN SUẤT LẺ</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">6</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01006">CP01006</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01006">DÃY CON LIÊN TIẾP</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">7</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01007">CP01007</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01007">SỐ ĐỨNG ĐẦU</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">8</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01008">CP01008</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01008">QUAY VÒNG DÃY SỐ</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">9</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01009">CP01009</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01009">SẮP XẾP THEO THỨ TỰ XUẤT HIỆN</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">10</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01010">CP01010</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01010">ĐIỂM CÂN BẰNG</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr class="bg--10th">
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">11</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01011">CP01011</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01011">CHÊNH LỆCH NHỎ NHẤT</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">12</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01012">CP01012</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01012">BỘ BA SỐ PYTAGO</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr class="bg--10th">
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">13</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01013">CP01013</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01013">SỐ ĐẦU TIÊN BỊ LẶP</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">14</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01014">CP01014</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01014">DÃY CON CHUNG</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">15</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01015">CP01015</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01015">TÌM SỐ DƯ</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">16</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01016">CP01016</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01016">ƯỚC SỐ CHUNG LỚN NHẤT (GCD)</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">17</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01017">CP01017</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01017">CHIA TAM GIÁC</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">18</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01018">CP01018</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01018">TRỘN DÃY SỐ</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">19</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01019">CP01019</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01019">CHỌN BÀI</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">20</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01020">CP01020</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01020">LẤY BỚT QUÂN CƠ</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">21</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01021">CP01021</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01021">TRỪ DẦN</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">22</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01022">CP01022</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01022">TRÒ CHƠI VỚI CÁC QUÂN BÀI</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">23</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01023">CP01023</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01023">CHIA HẾT</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">24</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01024">CP01024</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01024">TUNG XÚC XẮC</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">25</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01025">CP01025</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01025">DI CHUYỂN ROBOT</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">26</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01026">CP01026</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01026">DI CHUYỂN TRÊN ĐƯỜNG THẲNG</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">27</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01027">CP01027</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01027">SẮP XẾP ĐƠN GIẢN</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">28</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01028">CP01028</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01028">TÍCH NHỎ NHẤT</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">29</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01029">CP01029</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01029">BỐC BI</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">30</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01030">CP01030</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01030">PHẦN TỬ LỚN NHẤT TRONG DÃY CON</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">31</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01031">CP01031</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01031">BỘ BA SỐ CÓ TỔNG NHỎ HƠN K</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">32</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01032">CP01032</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP01032">DÃY CON LIÊN TIẾP TỔNG BẰNG K</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Lập trình cơ bản</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">33</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02001">CP02001</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02001">KHOẢNG CÁCH XA NHẤT</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Dãy số</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">34</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02002">CP02002</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02002">CẶP SỐ CÓ TỔNG BẰNG K</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Dãy số</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">35</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02003">CP02003</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02003">DÃY TAM GIÁC DÀI NHẤT</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Dãy số</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">36</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02004">CP02004</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02004">BỘ BA SỐ BẰNG K</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Dãy số</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">37</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02005">CP02005</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02005">PHÂN HOẠCH DÂN CƯ</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Dãy số</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">38</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02006">CP02006</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02006">KHUYẾN MẠI</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Dãy số</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">39</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02007">CP02007</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02007">TRAINING HỆ THỐNG A.I</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Dãy số</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">40</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02008">CP02008</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02008">MUA QUÀ</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Dãy số</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">41</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02009">CP02009</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02009">DÃY SỐ YẾU NHẤT</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Dãy số</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">42</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02010">CP02010</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02010">MÁI NHÀ</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Dãy số</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">43</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02011">CP02011</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02011">XÁC SUẤT CHỌN BIT</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Dãy số</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">44</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02012">CP02012</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02012">VẪN LÀ XÁC SUẤT CHỌN BIT</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Dãy số</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">45</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02013">CP02013</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02013">DÃY SỐ ĐỘC ĐẮC</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Dãy số</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">46</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02014">CP02014</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02014">BIỂU THỨC</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Dãy số</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                            <tr>
+                            <td class="text--middle"><span class="ques__table__icon">&lt;/&gt;</span></td>
+                            <td class="text--middle">47</td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02015">CP02015</a>
+                            </td>
+                            <td>
+                                <a href="http://code.ptit.edu.vn/student/question/CP02015">CHIA HẾT</a>
+                            </td>
+                            <td>Lập trình cơ bản</td>
+                            <td>Dãy số</td>
+                            <td class="text--middle">1</td>
+                        </tr>
+                                        </tbody>
+                </table>
+            </div>
+                <div class="d-flex mx-auto justify-content-center">
+            
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function toggleMenu(){
+        $('.nav__profile__menu').toggleClass('appear').toggleClass('disappear');
+    }
+    function close_popup(){
+        $('.main__user__welcome').addClass('disappear');
+    }
+    function customSelect(className){
+        var x, i, j, l, ll, selElmnt, a, b, c;
+        /* Look for any elements with the class "custom-select": */
+        x = document.getElementsByClassName(className);
+        l = x.length;
+        for (i = 0; i < l; i++) {
+            selElmnt = x[i].getElementsByTagName("select")[0];
+            ll = selElmnt.length;
+            /* For each element, create a new DIV that will act as the selected item: */
+            a = document.createElement("DIV");
+            a.setAttribute("class", "select-selected");
+            let name = '';
+            if (selElmnt.options[selElmnt.selectedIndex] !== undefined) {
+                name = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+            }
+            let limit;
+            if(className == "select__lang"){
+                limit = 10;
+            }else if(className == "select__subject"){
+                limit = 35;
+            }else if(className == "select__group"){
+                limit = 7;
+            }else if(className == "select__term"){
+                limit = 18;
+            }
+            if(name.length > limit){
+                name = name.substring(0, limit) + "...";
+            }
+            a.innerHTML = name;
+            x[i].appendChild(a);
+            /* For each element, create a new DIV that will contain the option list: */
+            b = document.createElement("DIV");
+            b.setAttribute("class", "select-items select-hide");
+            for (j = 0; j < ll; j++) {
+                /* For each option in the original select element,
+                create a new DIV that will act as an option item: */
+                c = document.createElement("DIV");
+                c.innerHTML = selElmnt.options[j].innerHTML;
+                if(j != selElmnt.selectedIndex){
+
+                    c.addEventListener("click", function(e) {
+                        /* When an item is clicked, update the original select box,
+                        and the selected item: */
+                        var y, i, k, s, h, sl, yl;
+                        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                        sl = s.length;
+                        h = this.parentNode.previousSibling;
+                        for (i = 0; i < sl; i++) {
+                            if (s.options[i].innerHTML == this.innerHTML) {
+                                s.selectedIndex = i;
+                                h.innerHTML = this.innerHTML;
+                                y = this.parentNode.getElementsByClassName("same-as-selected");
+                                yl = y.length;
+                                for (k = 0; k < yl; k++) {
+                                    y[k].removeAttribute("class");
+                                }
+                                this.setAttribute("class", "same-as-selected");
+                                break;
+                            }
+                        }
+                        if(className == "select__lang"){
+                            // console.log('ok');
+                            if(h.innerHTML == 'C/C++'){
+                                var editor = ace.edit("editor");
+                                editor.session.setMode("ace/mode/c_cpp");
+                            }else if(h.innerHTML == 'Java'){
+                                var editor = ace.edit("editor");
+                                editor.session.setMode("ace/mode/java");
+                            }else{
+                                var editor = ace.edit("editor");
+                                editor.session.setMode("ace/mode/python");
+                            }
+                        }else if(className == "select__subject"){
+                            let len = selElmnt.length;
+                            for(let i = 0; i < len; i++){
+                                if(h.innerHTML == selElmnt.options[i].innerHTML){
+                                    if (!selElmnt.options[i].disabled) {
+                                        window.location = '?' + selElmnt.name + '=' + selElmnt.options[i].value;
+                                        break;
+                                    }
+                                }
+                            }
+                        }else if(className == "select__group"){
+                            let len = selElmnt.length;
+                            for(let i = 0; i < len; i++){
+                                if(h.innerHTML == selElmnt.options[i].innerHTML) {
+                                    if (!selElmnt.options[i].disabled) {
+                                        window.location = '?semester=' + selElmnt.options[selElmnt.selectedIndex].getAttribute('data-semester') + '&' + selElmnt.name + '=' + selElmnt.options[i].value;
+                                        break;
+                                    }
+                                }
+                            }
+                        }else if(className == "select__term"){
+                            let len = selElmnt.length;
+                            for(let i = 0; i < len; i++){
+                                if(h.innerHTML == selElmnt.options[i].innerHTML) {
+                                    if (!selElmnt.options[i].disabled) {
+                                        window.location = '?' + selElmnt.name + '=' + selElmnt.options[i].value;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        h.click();
+                    });
+                }
+                b.appendChild(c);
+            }
+            x[i].appendChild(b);
+            a.addEventListener("click", function(e) {
+                /* When the select box is clicked, close any other select boxes,
+                and open/close the current select box: */
+                e.stopPropagation();
+                closeAllSelect(this);
+                this.nextSibling.classList.toggle("select-hide");
+                this.classList.toggle("select-arrow-active");
+            });
+        }
+
+    }
+
+    customSelect('select__lang');
+    customSelect('select__subject');
+    customSelect('select__group');
+    customSelect('select__term');
+
+    function closeAllSelect(elmnt) {
+        /* A function that will close all select boxes in the document,
+        except the current select box: */
+        var x, y, z, i, xl, yl, zl, arrNo = [];
+        x = document.getElementsByClassName("select-items");
+        y = document.getElementsByClassName("select-selected");
+        xl = x.length;
+        yl = y.length;
+        for (i = 0; i < yl; i++) {
+            if (elmnt == y[i]) {
+                arrNo.push(i)
+            } else {
+                y[i].classList.remove("select-arrow-active");
+            }
+        }
+        for (i = 0; i < xl; i++) {
+            if (arrNo.indexOf(i)) {
+                x[i].classList.add("select-hide");
+            }
+        }
+    }
+
+    /* If the user clicks anywhere outside the select box,
+    then close all select boxes: */
+    document.addEventListener("click", closeAllSelect);
+    function popup_disappear(a){
+        let input = document.getElementsByClassName(a);
+        $(`.${a}`).addClass('disappear');
+    }
+    function toggleMenu(str){
+        if($('.' + str).data('clicked')){
+            $('.' + str).data('clicked', false);
+        }else{
+            $('.' + str).data('clicked', true);
+        }
+    }
+    // window.onload = function () {
+        $("body").click(function(){
+            var z = document.getElementsByClassName("nav__profile__menu");
+            var zl = z.length;
+            for (let i = 0; i < zl; i++) {
+                for(let j = 0; j < z[i].classList.length; j++){
+                    let str = z[i].classList.item(j);
+                    // console.log(str);
+                    if(str.includes('dropdown')){
+                        if($('.' + str).data('clicked')){
+                            // console.log(str);
+                            z[i].classList.toggle('appear');
+                            z[i].classList.toggle('disappear');
+                            $('.' + str).data('clicked', false);
+                            break;
+                        }else{
+                            z[i].classList.toggle('appear', false);
+                            z[i].classList.toggle('disappear', true);
+                        }
+                    }
+                }
+                // z[i].classList.toggle('appear');
+            }
+        });
+    // }
+    function input_active(a){
+        let input = document.getElementById(a);
+        // console.log(input.value);
+        if(input.value !== ""){
+            $(`#${a}`).addClass('setting__input--active');
+        }else{
+            $(`#${a}`).removeClass('setting__input--active');
+        }
+    }
+
+    var loadFile = function(event) {
+        var image = document.getElementById('loadFileImg');
+        image.src = URL.createObjectURL(event.target.files[0]);
+        var fileReader = new FileReader();
+
+        fileReader.onload = function(fileLoadedEvent) {
+            var srcData = fileLoadedEvent.target.result; // <--- data: base64
+            //console.log(srcData);
+        }
+        fileReader.readAsDataURL(event.target.files[0]);
+    };
+
+    </script>
+
+</body></html>

@@ -1,0 +1,19 @@
+/*
+for (auto& c:sudoku){
+		c+=49;
+		cout << c;
+	}
+	719654283
+	426813759
+	835792416
+	264371598
+	387569124
+	591248367
+	158937642
+	943126875
+	672485931
+	string sudoku="haagaacadacaibaafaaafajcaaacaaahafaidahaajacaajaaeaaahbaiadhaacaaabaaiaagacaaajda";
+	string sudoku1="719654283426813759835792416264371598387569124591248367158937642943126875672485931";
+	string sudoku2="hbjgfecidecgibdhfjidfhjcebgcgedhbfjidihfgjbcefjbceidghbfijdhgecjedbcgihfghceifjdb";
+	string flag= "ispclub{5ud0ku_puzzl3_15_n0t_345y}";
+*/
