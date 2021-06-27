@@ -1,32 +1,41 @@
 #include <bits/stdc++.h>
 #define faster() ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-#define base 123456789
+#define base 1000000007
+#define inv 1000000005
+#define MAX 100005
 using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
 typedef unsigned int uint;
 typedef vector <int> vi;
 typedef vector <string> vs;
-
-ll pwr(int a, ll n){
-    if (n==0) return 1;
-    if (n==1) return a;
-    ll r=pwr(a, n/2);
-    if (n&1) return (a*r*r)%base;
-    return (r*r)%base;
+ll a[55];
+void init(){
+    a[1]=1;
+    a[2]=2;
+    a[3]=4;
+    for (int i=4; i<=55; i++){
+        for (int j=1; j<=3; j++) a[i]+=a[i-j];
+    }
+    
 }
 void solve(){
-    ll n;
+    int n;
     cin >> n;
-    cout << pwr(2, n-1)%base; 
+    cout << a[n];
     cout << endl;
-}
+}   
 
 int main()
 {
     faster();
     int t;
     cin >> t;
+    init();
     while (t--) solve();
     return 0;
 }
+
+
+
+
