@@ -1,34 +1,43 @@
 #include <bits/stdc++.h>
 #define faster() ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#define base 1000000007
 using namespace std;
-int n, a[15];
-bool check=1;
-
-void printf()
-{
-	for (int i=1; i<=n; i++)
-		cout << a[i];
-	cout << endl;
-}
+typedef long long ll;
+typedef unsigned long long ull;
+typedef unsigned int uint;
+typedef vector <int> vi;
+typedef vector <string> vs;
 
 void solve(){
-	int i=n; 
-	while (i>=0 && a[i]==1){
-		a[i]=0;
-		i--;
-	}
-	if (i>=0) {
-		a[i]=1;
-		printf();
-	}
-	else check=0;
-}
-int main(){
-	faster();
-	cin >> n;
-	printf();
-	while (check)
-		solve();
-	return 0;
+    int n;
+    cin >> n;
+    int a[n+1];
+    int j=1;
+    while (j<=n){
+        for (int i=1; i<=j; i++) a[i]=6;
+        while (1){
+            for (int i=1; i<=j; i++) cout << a[i];
+            cout << " ";
+            int i=j;
+            while (i>0 && a[i]==8) {
+                a[i]=6;
+                i--;
+            }
+            if (i==0){ 
+                j++;
+                break;
+            }
+            else a[i]=8;
+        }
+    }
+    cout << endl;
 }
 
+int main()
+{
+    faster();
+    int t;
+    cin >> t;
+    while (t--) solve();
+    return 0;
+}

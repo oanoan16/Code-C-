@@ -1,54 +1,37 @@
 #include <bits/stdc++.h>
 #define faster() ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define base 1000000007
-#define N	1000
+#define N 100007
 using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
 typedef unsigned int uint;
-typedef vector <int> vi;
-typedef vector <string> vs;
 
-vi v;
-void prime(){
-	bool check[N];
-	for (int i = 2; i <= N; i++)	check[i] = true;
-	
-	for (int i = 2; i <= N; i++){
-		if (check[i] == true)
-			for (int j = 2 * i; j <= N; j += i)
-				check[j] = false;
-	}
-	
-	for (int i = 2; i <= N; i++)
-		if (check[i] ==  true)	v.push_back(i);
-}
-
-int main()
-{
-	faster();
-	int t;
-	cin >> t;
-	prime();
-	while (t--){
-		int n, i=0;
-		cin >> n;
-		while (v[i] * v[i] <= n){
-			if (n % v[i] == 0){
-				cout << v[i] << " ";
-				int c = 0;
-				while (n % v[i] == 0){
-					c++;
-					n /= v[i];
-				}
-				cout << c << " ";	
-			}	
-			i++;
+void solve(){
+	ll n;
+	cin >> n;
+	for (int i=2; i<=sqrt(n); i++){
+		if (n%i==0){
+			int c=0;
+			while (n%i==0){
+				c++;
+				n/=i;
+			}
+			cout << i << " " << c << " ";
 		}
-		if (n > 2) cout << n << " " << 1;
-		cout << endl;
 	}
-	return 0;
+	if (n>1) cout << n << " " << 1 <<" ";
+	cout << endl;
 }
+
+int main(){
+    faster();
+    int t=1;
+	cin >> t;
+	while (t--) solve();
+    return 0;
+}
+
+
 
 

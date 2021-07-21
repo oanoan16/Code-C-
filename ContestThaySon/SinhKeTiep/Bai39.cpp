@@ -4,8 +4,8 @@ using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
 typedef unsigned int unit;
-ull l;
-int find(ull k, int x) 
+ll l;
+int find(ll k, int x) 
 {
 	l >>= 1;
 	if (k<x) return k;
@@ -16,7 +16,7 @@ int find(ull k, int x)
 int main()
 {
 	faster();
-	ull n,i,j,k;
+	ll n,i,j,k;
 	string s;
 	cin >> s >> n;
 	n--;

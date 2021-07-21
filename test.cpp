@@ -1,54 +1,45 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <stdio.h>
 
-using namespace std;
-#define MAX 100000
-vector < pair <int, int > > vp;
-
-int main(){
-    int n, k, a[25][25], v[25], dh=0;
-    cin >> n >> k;
-    for (int i=1; i<=n; i++){
-        for (int j=1; j<=n; j++){
-            cin >> a[i][j];
-            if (i!=j && a[i][j]==0) a[i][j]=MAX;
-        }
-    }
-    int sc=1, s[25], t, l, min;
-    for (int i=0; i<25; i++) v[i]=1, s[i]=0; 
-
-    s[k]=1;
-    v[k]=0;
-    while (sc<n){
-        min=MAX;
-        for (int i=1; i<=n; i++){
-            if (s[i]){
-                t=s[i];
-                for (int j=1; j<=n; j++){
-                    if (v[j] && min>a[t][j]){
-                        k=t;
-                        l=j;
-                        min=a[t][j];
-                    }
-                }
-            }
-        }
-        sc++;
-        dh+=min;
-        vp.push_back(make_pair(k, l));
-        v[l]=0;
-        a[k][l]=MAX;
-        a[l][k]=MAX;
-        s[l]=1;
-    }
-
-    cout << "dH = " << " " << dh << endl;
-    for (auto i:vp){
-        cout << i.first << " " << i.second << endl;
-    }
-    return 0;
+void swap(long int* a, long int* b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
+void solve(){
+    int n, m, k;
+    scanf("%d%d%d", &n, &m, &k);
+    long int b[n*m];
+    int c=-1;
+    for (int i=0; i<n; i++){
+        for (int j=0; j<m; j++){
+        	long int val;
+            scanf("%ld", &val);
+            b[++c]=val;
+        }
+    }
+    for (int i=0; i<=c; i++) printf("%ld ", b[i]);
+    printf("\n");
+    
+    for (int i=0; i<=c; i++){
+        for (int j=0; j<=c-i-1; j++){
+            if (b[j]>b[j+1]){
+                swap(&b[j], &b[j+1]);
+            }
+        }
+    }
+    
+    for (int i=0; i<=c; i++) printf("%ld ", b[i]);
+    if (k>c)
+        printf("-1\n");
+    else 
+        printf("%ld\n", b[c-k]);
+}
 
-   
+int main(){
+    int t;
+    scanf("%d", &t);
+    while (t--){
+        solve();
+    }
+}

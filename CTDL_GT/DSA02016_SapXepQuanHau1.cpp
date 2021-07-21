@@ -27,7 +27,7 @@ void backTrack(int i){
     for (int j=1; j<=n; j++){
         if (check(i, j)){
             a[i][j]=1;
-            v[i]=j;;
+            v[i]=j;
             if (i==n) ans++;
             else backTrack(i+1);
             a[i][j]=0;

@@ -38,4 +38,16 @@ int main()
     return 0;
 }
 
-
+/*
+void solve(){
+    int n;
+    cin >> n;
+    vi a(n);
+    for (int i=0;  i<n; i++) cin >> a[i];
+    next_permutation(a.begin(), a.end());
+    for (auto x:a){
+        cout << x << " ";
+    }
+    cout << endl;
+}
+*/

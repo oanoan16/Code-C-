@@ -10,22 +10,25 @@ typedef vector <int> vi;
 typedef vector <string> vs;
 
 void solve(){
-	ll a, b;
-	cin >> a >> b;
-	ll GCD=__gcd(a, b);
-	ll LCM=a*b/GCD;
-	cout << LCM << " " << GCD;
-	cout << endl;
+    ll n;
+    cin >> n;
+    ll ans=0;
+    if (sqrt(n)*sqrt(n)==n) ans+=sqrt(n);
+    for (int i=1; i<sqrt(n); i++){
+        if (n%i==0){
+            ans=ans+i+(n/i);
+        }
+    }
+    cout << ans << endl;
 }
 
 int main(){
     faster();
-    int t=1;
-	cin >> t;
-	while (t--) solve();
+    int t;
+    cin >> t;
+    while (t--)
+        solve();
     return 0;
 }
-
-
 
 

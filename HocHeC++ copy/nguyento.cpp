@@ -9,23 +9,32 @@ typedef unsigned int uint;
 typedef vector <int> vi;
 typedef vector <string> vs;
 
+bool prime(int n){
+	if (n<2) return false;
+    for (int i=2; i<=sqrt(n); i++){
+        if (n%i==0) return false;
+    }
+    return true;
+}
+
 void solve(){
-	ll a, b;
-	cin >> a >> b;
-	ll GCD=__gcd(a, b);
-	ll LCM=a*b/GCD;
-	cout << LCM << " " << GCD;
-	cout << endl;
+    int n;
+    int c=0;
+    cin >> n;
+    if (prime(n)) c=1;
+    if (c) cout << "YES";
+    else cout << "NO";
+    cout << endl;
 }
 
 int main(){
     faster();
-    int t=1;
-	cin >> t;
-	while (t--) solve();
+ //   int t;
+//    prime();
+//    cin >> t;
+//    while (t--) 
+    solve();
     return 0;
 }
-
-
 
 

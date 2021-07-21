@@ -1,35 +1,39 @@
-#include <iostream>
-#include <vector>
-#include <queue>
+#include <stdio.h>
 
-using namespace std;
-int main(){
-    int n, a[105][105], v[105]={0};
-    queue <int> q;
-    vector <int> g[105];
-    
-    cin >> n;
-    for (int i=1; i<=n; i++){
-        for (int j=1; j<=n; j++){
-            cin >> a[i][j];
-            if (a[i][j]==1) g[i].push_back(j);
+void swap(long int* a, long int* b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void solve(){
+    int n, m, k;
+    scanf("%d%d%d", &n, &m, &k);
+    long int b[n*m];
+    int c=-1;
+    for (int i=0; i<n; i++){
+        for (int j=0; j<m; j++){
+        	long int val;
+            scanf("%ld", &val);
+            b[++c]=val;
         }
     }
     
-    v[1]=1;
-    q.push(1);
-    while (!q.empty()){
-        int x=q.front();
-        cout << x << " ";
-        q.pop();
-        for (auto i:g[x]){
-            if (!v[i]){
-                v[i]=1;
-                q.push(i);
+    for (int i=0; i<=c; i++){
+        for (int j=0; j<=c-i-1; j++){
+            if (b[j]>b[j+1]){
+                swap(&b[j], &b[j+1]);
             }
         }
     }
-    cout << endl;
-    return 0;
-}
     
+    printf("%ld", b[c-k]);
+}
+
+int main(){
+    int t;
+    scanf("%d", &t);
+    while (t--){
+        solve();
+    }
+}

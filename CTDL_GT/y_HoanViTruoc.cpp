@@ -9,14 +9,22 @@ typedef vector <int> vi;
 typedef vector <string> vs;
 
 void solve(){
-   string gray, bir="";
-   cin >> gray;
-   bir+=gray[0];
-   for (int i=1; i<gray.size(); i++){
-       if (gray[i]=='0') bir+=bir[i-1];
-       else bir+='1'-bir[i-1]+48;
-   }
-   cout << bir << endl;
+    int n, a[1000];
+    cin >> n;
+    for (int j=0; j<n; j++) cin >> a[j];
+    int i=n-1;
+    while (i>0 && a[i-1]<=a[i]) i--;
+    if (i>0){
+        int j=i-1;
+        while(j+1<n && a[j+1]<a[i-1]) j++;
+        swap(a[i-1], a[j]);
+        reverse(a+i, a+n);
+    }
+    else{
+        reverse(a, a+n);
+    }
+    for (int j=0; j<n; j++) cout << a[j] << " ";
+    cout << endl;
 }
 
 int main()
